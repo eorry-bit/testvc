@@ -1,0 +1,28 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "8d2b79a0-46f2-11ed-b49e-ed15873ce710"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "c768efd0-46ed-11ed-aa1b-390f304feaeb"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "97f7c1e0-46f2-11ed-b49e-ed15873ce710"
+    },
+    "label" : null,
+    "name" : "虎门大桥",
+    "type" : "桥梁"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
