@@ -1,0 +1,78 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : null,
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "5ad2da90-5b2c-11ed-be0b-a19538d738b9"
+    },
+    "name" : "测试过滤qi",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 1,
+      "toIndex" : 0,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : null,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 635,
+        "layoutY" : 415
+      },
+      "configuration" : {
+        "computeEngine" : "Siddhi",
+        "windowTime" : 60000,
+        "maxWindowTime" : 7200000
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe79bd70-5b3c-11ed-a6de-c5143b3351ca"
+      },
+      "name" : "f",
+      "ruleChainId" : null,
+      "type" : "com.inteagle.rule.engine.wy.filter.DisplacementComprehensiveFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 178,
+        "layoutY" : 396
+      },
+      "configuration" : {
+        "msgCount" : 0,
+        "periodInSeconds" : 1,
+        "scriptLang" : "JS",
+        "jsScript" : "var axis_x = Math.random(-100, 100) * 100 * 0.28;\nvar axis_y = Math.random(-100, 100) * 100 * 0.28;\nvar axis_z = Math.random(-100, 100) * 100 * 0.28;\nvar angle = Math.random(-100, 100) * 100 * 0.28;\n\nvar single_axis_x = Math.random(-100, 100) * 100 * 0.28;\nvar single_axis_y = Math.random(-100, 100) * 100 * 0.28;\nvar single_axis_z = Math.random(-100, 100) * 100 * 0.28;\nvar single_angle = Math.random(-100, 100) * 100 * 0.28;\nvar totalDisplacement = Math.random(-100, 100) * 100 * 0.28;\n\n\n\n\nvar msg = {\n    wc_parent_id: \"d37ec600-348c-11ed-9f94-11b3fae2cd5b\",\n    wz_child_id: \"fd37cbc0-3425-11ed-9804-49267d68757e\",\n    axis_x: axis_x,\n    axis_y: axis_y,\n    axis_z: axis_z,\n    angle: angle,\n    single_axis_x: single_axis_x,\n    single_axis_y: single_axis_y,\n    single_axis_z: single_axis_z,\n    single_angle: single_angle,\n    totalDisplacement:totalDisplacement\n};\nvar metadata = {\n    data: 40\n};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn {\n    msg: msg,\n    metadata: metadata,\n    msgType: msgType\n};",
+        "mvelScript" : "var axis_x = Math.random(-100, 100) * 100 * 0.28;\nvar axis_y = Math.random(-100, 100) * 100 * 0.28;\nvar axis_z = Math.random(-100, 100) * 100 * 0.28;\nvar angle = Math.random(-100, 100) * 100 * 0.28;\n\nvar single_axis_x = Math.random(-100, 100) * 100 * 0.28;\nvar single_axis_y = Math.random(-100, 100) * 100 * 0.28;\nvar single_axis_z = Math.random(-100, 100) * 100 * 0.28;\nvar single_angle = Math.random(-100, 100) * 100 * 0.28;\nvar totalDisplacement = Math.random(-100, 100) * 100 * 0.28;\n\n\n\n\nvar msg = {\n    wc_parent_id: \"d37ec600-348c-11ed-9f94-11b3fae2cd5b\",\n    wz_child_id: \"fd37cbc0-3425-11ed-9804-49267d68757e\",\n    axis_x: axis_x,\n    axis_y: axis_y,\n    axis_z: axis_z,\n    angle: angle,\n    single_axis_x: single_axis_x,\n    single_axis_y: single_axis_y,\n    single_axis_z: single_axis_z,\n    single_angle: single_angle,\n    totalDisplacement:totalDisplacement\n};\nvar metadata = {\n    data: 40\n};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn {\n    msg: msg,\n    metadata: metadata,\n    msgType: msgType\n};",
+        "originatorId" : "0448f820-5a83-11ed-b21f-f73e7b7fb69e",
+        "originatorType" : "DEVICE"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe7c7c90-5b3c-11ed-a6de-c5143b3351ca"
+      },
+      "name" : "ff",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
