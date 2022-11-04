@@ -38,38 +38,95 @@
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
+  "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1667375432714,
+      "lastUpdateTs" : 1667446728944,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "duration",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : 60,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1667446728944,
+      "longValue" : 1667446728944,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "jobId",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : 1,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1667378310387,
-      "longValue" : 1667378310173,
+      "lastUpdateTs" : 1667445932679,
+      "longValue" : 1667445930255,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastConnectTime",
-      "lastUpdateTs" : 1667376616389,
-      "longValue" : 1667376616389,
+      "lastUpdateTs" : 1667445667523,
+      "longValue" : 1667445667523,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastDisconnectTime",
-      "lastUpdateTs" : 1667375739061,
-      "longValue" : 1667375739061,
+      "lastUpdateTs" : 1667445597051,
+      "longValue" : 1667445597051,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "measureAction",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : null,
+      "strValue" : "getLatestPicture"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "measureJobStatus",
+      "lastUpdateTs" : 1667379547546,
+      "longValue" : null,
+      "strValue" : "0"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "measureMode",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : null,
+      "strValue" : "PERIOD"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "periodInterval",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : 300,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -79,7 +136,95 @@
       "lastUpdateTs" : 1667375431569,
       "longValue" : null,
       "strValue" : "provisioned"
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "temperatureOffset",
+      "lastUpdateTs" : 1667386283148,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "watermarks",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : 300,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "windowTime",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : 60,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"cameraDeviceId\":\"068ea260-5a83-11ed-b21f-f73e7b7fb69e\",\"duration\":60,\"jobId\":1,\"measureMode\":\"PERIOD\",\"measureAction\":\"getLatestPicture\",\"periodInterval\":300,\"windowTime\":60,\"watermarks\":300,\"periodJobId\":null}",
+      "key" : "wyMeasureTaskConfig",
+      "lastUpdateTs" : 1667378469851,
+      "longValue" : null,
+      "strValue" : null
     } ],
-    "SHARED_SCOPE" : [ ]
+    "SHARED_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"ztDeviceId\":\"52614c70-5a82-11ed-b21f-f73e7b7fb69e\",\"x\":0,\"y\":0,\"height\":2160,\"width\":3840,\"factorX\":1,\"factorY\":1}",
+      "key" : "roi",
+      "lastUpdateTs" : 1667385300275,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"ztDeviceId\":\"4e60d2d0-5a82-11ed-b21f-f73e7b7fb69e\",\"x\":936,\"y\":672,\"height\":1152,\"width\":2496,\"factorX\":1,\"factorY\":1}",
+      "key" : "roi_4e60d2d0-5a82-11ed-b21f-f73e7b7fb69e",
+      "lastUpdateTs" : 1667385253597,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"ztDeviceId\":\"4f90c750-5a82-11ed-b21f-f73e7b7fb69e\",\"x\":0,\"y\":0,\"height\":2160,\"width\":3840,\"factorX\":1,\"factorY\":1}",
+      "key" : "roi_4f90c750-5a82-11ed-b21f-f73e7b7fb69e",
+      "lastUpdateTs" : 1667385238512,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"ztDeviceId\":\"512cc410-5a82-11ed-b21f-f73e7b7fb69e\",\"x\":1668,\"y\":0,\"height\":2160,\"width\":2172,\"factorX\":1,\"factorY\":1}",
+      "key" : "roi_512cc410-5a82-11ed-b21f-f73e7b7fb69e",
+      "lastUpdateTs" : 1667385283690,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"ztDeviceId\":\"52614c70-5a82-11ed-b21f-f73e7b7fb69e\",\"x\":0,\"y\":0,\"height\":2160,\"width\":3840,\"factorX\":1,\"factorY\":1}",
+      "key" : "roi_52614c70-5a82-11ed-b21f-f73e7b7fb69e",
+      "lastUpdateTs" : 1667385300275,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"ztDeviceId\":\"526da880-5a82-11ed-b21f-f73e7b7fb69e\",\"x\":1140,\"y\":444,\"height\":1212,\"width\":2232,\"factorX\":1,\"factorY\":1}",
+      "key" : "roi_526da880-5a82-11ed-b21f-f73e7b7fb69e",
+      "lastUpdateTs" : 1667385268597,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "selfAdaptivePw",
+      "lastUpdateTs" : 1667378327533,
+      "longValue" : null,
+      "strValue" : "CLOUD"
+    } ]
   }
 }
