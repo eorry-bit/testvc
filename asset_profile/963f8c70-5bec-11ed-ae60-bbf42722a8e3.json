@@ -1,0 +1,23 @@
+{
+  "entityType" : "ASSET_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "acd754f0-59b1-11ed-b874-ff0f0700f245"
+    },
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "963f8c70-5bec-11ed-ae60-bbf42722a8e3"
+    },
+    "image" : null,
+    "name" : "基坑"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
