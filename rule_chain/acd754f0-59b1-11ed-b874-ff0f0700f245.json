@@ -43,6 +43,14 @@
       "toIndex" : 7,
       "type" : "RPC Successful"
     }, {
+      "fromIndex" : 2,
+      "toIndex" : 11,
+      "type" : "Post attributes"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 12,
+      "type" : "Post telemetry"
+    }, {
       "fromIndex" : 6,
       "toIndex" : 2,
       "type" : "Success"
@@ -50,12 +58,20 @@
       "fromIndex" : 7,
       "toIndex" : 0,
       "type" : "Success"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 10,
+      "type" : "Created"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 1,
+      "type" : "Success"
     } ],
     "firstNodeIndex" : 6,
     "nodes" : [ {
       "additionalInfo" : {
-        "layoutX" : 824,
-        "layoutY" : 156
+        "layoutX" : 971,
+        "layoutY" : 832
       },
       "configuration" : {
         "defaultTTL" : 0
@@ -109,8 +125,8 @@
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 825,
-        "layoutY" : 266
+        "layoutX" : 976,
+        "layoutY" : 246
       },
       "configuration" : {
         "scriptLang" : "MVEL",
@@ -129,8 +145,8 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 825,
-        "layoutY" : 379
+        "layoutX" : 1028,
+        "layoutY" : 398
       },
       "configuration" : {
         "scriptLang" : "MVEL",
@@ -149,14 +165,15 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 825,
-        "layoutY" : 468
+        "description" : null,
+        "layoutX" : 913,
+        "layoutY" : 517
       },
       "configuration" : {
         "timeoutInSeconds" : 60
       },
       "createdTime" : 0,
-      "debugMode" : false,
+      "debugMode" : true,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -188,8 +205,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 428,
-        "layoutY" : 491
+        "layoutX" : 356,
+        "layoutY" : 512
       },
       "configuration" : {
         "scope" : "SERVER_SCOPE",
@@ -197,7 +214,7 @@
         "useServerTs" : false
       },
       "createdTime" : 0,
-      "debugMode" : false,
+      "debugMode" : true,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -206,9 +223,123 @@
       "name" : "保存摄像图片",
       "ruleChainId" : null,
       "type" : "org.thingsboard.rule.engine.image.TbMsgImageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 146,
+        "layoutY" : 534
+      },
+      "configuration" : {
+        "messageNames" : [ "wz_collision_event", "wc_collision_event" ],
+        "metadataNames" : [ ],
+        "checkAllKeys" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "02dfa3e0-5b22-11ed-a035-13821163440f"
+      },
+      "name" : "是否是碰撞事件",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 216,
+        "layoutY" : 42
+      },
+      "configuration" : {
+        "scriptLang" : "MVEL",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildMvel" : "var details = {};\nif (metadata.prevAlarmDetails != null) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    metadata.remove('prevAlarmDetails');\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "useMessageAlarmData" : true,
+        "overwriteAlarmDetails" : false,
+        "alarmType" : "General Alarm",
+        "severity" : "MAJOR",
+        "propagate" : true,
+        "relationTypes" : [ ],
+        "propagateToOwner" : true,
+        "propagateToTenant" : false,
+        "dynamicSeverity" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "7c04a470-5b25-11ed-a035-13821163440f"
+      },
+      "name" : "test",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 552,
+        "layoutY" : 26
+      },
+      "configuration" : {
+        "numbersToTemplate" : "${userPhone}",
+        "smsMessageTemplate" : "Device ${deviceName} has high temperature ${temp}",
+        "useSystemSmsSettings" : true,
+        "smsProviderConfiguration" : null
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "7c04f290-5b25-11ed-a035-13821163440f"
+      },
+      "name" : "测试",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.sms.TbSendSmsNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 474,
+        "layoutY" : 708
+      },
+      "configuration" : {
+        "x" : ""
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5ba146a0-5cb7-11ed-880c-399ca44891fd"
+      },
+      "name" : "重新计算参考点",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.wy.WyReferencePoint3CalNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 992,
+        "layoutY" : 685
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5c2624b0-5cd0-11ed-9bad-3dc2993e5405"
+      },
+      "name" : "计算位移",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.measurement.TbMsgTimeserversMeasurementNode"
     } ],
     "ruleChainConnections" : null
   },
+  "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
   }
