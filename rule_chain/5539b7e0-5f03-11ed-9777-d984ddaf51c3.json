@@ -42,24 +42,16 @@
       "type" : "Disconnect Event"
     }, {
       "fromIndex" : 0,
-      "toIndex" : 6,
-      "type" : "Post telemetry"
-    }, {
-      "fromIndex" : 0,
-      "toIndex" : 10,
-      "type" : "Post telemetry"
-    }, {
-      "fromIndex" : 0,
       "toIndex" : 12,
       "type" : "Post attributes"
     }, {
       "fromIndex" : 0,
-      "toIndex" : 13,
-      "type" : "Post telemetry"
-    }, {
-      "fromIndex" : 0,
       "toIndex" : 14,
       "type" : "RPC Request from Device"
+    }, {
+      "fromIndex" : 0,
+      "toIndex" : 16,
+      "type" : "Post telemetry"
     }, {
       "fromIndex" : 4,
       "toIndex" : 1,
@@ -108,6 +100,18 @@
       "fromIndex" : 14,
       "toIndex" : 15,
       "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 6,
+      "type" : "True"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 10,
+      "type" : "True"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 13,
+      "type" : "True"
     } ],
     "firstNodeIndex" : 0,
     "nodes" : [ {
@@ -161,7 +165,7 @@
         "useServerTs" : false
       },
       "createdTime" : 0,
-      "debugMode" : false,
+      "debugMode" : true,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -234,8 +238,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 129,
-        "layoutY" : 590
+        "layoutX" : 136,
+        "layoutY" : 589
       },
       "configuration" : {
         "messageNames" : [ "x1", "x2", "x3", "y1", "y2", "y3", "r1", "r2", "r3", "theta", "wcParentId", "wzChildId" ],
@@ -274,8 +278,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 700,
-        "layoutY" : 594
+        "layoutX" : 727,
+        "layoutY" : 597
       },
       "configuration" : {
         "defaultTTL" : 0,
@@ -283,7 +287,7 @@
         "useServerTs" : false
       },
       "createdTime" : 0,
-      "debugMode" : false,
+      "debugMode" : true,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -316,8 +320,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 376,
-        "layoutY" : 499
+        "layoutX" : 313,
+        "layoutY" : 388
       },
       "configuration" : {
         "messageNames" : [ "Image" ],
@@ -331,7 +335,7 @@
         "entityType" : "RULE_NODE",
         "id" : "45194480-5f11-11ed-9777-d984ddaf51c3"
       },
-      "name" : "是否上传图片",
+      "name" : "上传图片",
       "ruleChainId" : null,
       "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
     }, {
@@ -346,7 +350,7 @@
         "maxWindowTime" : 7200000
       },
       "createdTime" : 0,
-      "debugMode" : false,
+      "debugMode" : true,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -358,8 +362,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 545,
-        "layoutY" : 397
+        "layoutX" : 594,
+        "layoutY" : 307
       },
       "configuration" : {
         "x" : ""
@@ -377,8 +381,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 353,
-        "layoutY" : 679
+        "layoutX" : 307,
+        "layoutY" : 500
       },
       "configuration" : {
         "sentinel" : true,
@@ -387,7 +391,7 @@
         "capture" : true
       },
       "createdTime" : 0,
-      "debugMode" : false,
+      "debugMode" : true,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -399,8 +403,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 614,
-        "layoutY" : 735
+        "layoutX" : 213,
+        "layoutY" : 19
       },
       "configuration" : {
         "serviceIdMetaDataAttribute" : "serviceId",
@@ -420,8 +424,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 887,
-        "layoutY" : 737
+        "layoutX" : 486,
+        "layoutY" : 21
       },
       "configuration" : {
         "serviceIdMetaDataAttribute" : "serviceId",
@@ -438,6 +442,25 @@
       "name" : "响应设备调用",
       "ruleChainId" : null,
       "type" : "org.thingsboard.rule.engine.rpc.TbSendRPCReplyNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 31,
+        "layoutY" : 393
+      },
+      "configuration" : {
+        "messageTypes" : [ "POST_TELEMETRY_REQUEST" ]
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ad8e8c30-5f31-11ed-9c9b-3d29c339a596"
+      },
+      "name" : "遥测数据",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeFilterNode"
     } ],
     "ruleChainConnections" : null
   },
