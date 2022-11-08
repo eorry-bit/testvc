@@ -1,0 +1,45 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "",
+      "gateway" : false,
+      "overwriteActivityTime" : false
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "710d4710-5a81-11ed-bd2b-45a46185eaad"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "614ae2f0-5f55-11ed-b493-d560873b7b58"
+    },
+    "label" : "",
+    "name" : "gu001",
+    "softwareId" : null,
+    "type" : "视觉位移计(摄像头和姿态一体)"
+  },
+  "credentials" : {
+    "credentialsId" : "biroCgEmg6Kv87qhK74Y",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ],
+    "SHARED_SCOPE" : [ ]
+  }
+}
