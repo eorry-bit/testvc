@@ -1,0 +1,47 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "",
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "accessToken" : "22222222222222222",
+      "deviceSerial" : "111111111111111"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "64ed55b0-5a81-11ed-bd2b-45a46185eaad"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "082832e0-6720-11ed-b5d1-d72eb61ce893"
+    },
+    "label" : "",
+    "name" : "testgudan",
+    "softwareId" : null,
+    "type" : "海康摄像头"
+  },
+  "credentials" : {
+    "credentialsId" : "bkYs5GZQnEByiywGnWWy",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ],
+    "SHARED_SCOPE" : [ ]
+  }
+}
