@@ -1,0 +1,1681 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "assignedCustomers" : null,
+    "configuration" : {
+      "description" : "",
+      "widgets" : {
+        "08c94320-e02f-fc74-8eee-7b518c7d0d0f" : {
+          "isSystemType" : true,
+          "bundleAlias" : "entity_admin_widgets",
+          "typeAlias" : "device_admin_table",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 6.5,
+          "config" : {
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "4px",
+            "settings" : {
+              "enableSearch" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10,
+              "defaultSortOrder" : "entityName",
+              "displayEntityName" : true,
+              "displayEntityType" : true,
+              "entitiesTitle" : "Device admin table",
+              "enableSelectColumnDisplay" : true,
+              "enableStickyHeader" : true,
+              "enableStickyAction" : true,
+              "reserveSpaceForHiddenAction" : "true",
+              "displayEntityLabel" : false,
+              "useRowStyleFunction" : false
+            },
+            "title" : "New Device admin table",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "356fbd32-c81a-1041-b81a-b975aee970a6",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "active",
+                "type" : "attribute",
+                "label" : "active",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.006170882806317501
+              }, {
+                "name" : "type",
+                "type" : "entityField",
+                "label" : "类型",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.5582891085882579
+              } ]
+            } ],
+            "showTitleIcon" : false,
+            "titleIcon" : "more_horiz",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "displayTimewindow" : true,
+            "actions" : {
+              "headerButton" : [ {
+                "name" : "Add device",
+                "icon" : "add",
+                "type" : "customPretty",
+                "customHtml" : "<form #addDeviceForm=\"ngForm\" [formGroup]=\"addDeviceFormGroup\"\n      (ngSubmit)=\"save()\" style=\"width: 480px;\">\n  <mat-toolbar fxLayout=\"row\" color=\"primary\">\n    <h2>Add device</h2>\n    <span fxFlex></span>\n    <button mat-button mat-icon-button\n            (click)=\"cancel()\"\n            type=\"button\">\n      <mat-icon class=\"material-icons\">close</mat-icon>\n    </button>\n  </mat-toolbar>\n  <mat-progress-bar color=\"warn\" mode=\"indeterminate\" *ngIf=\"isLoading$ | async\">\n  </mat-progress-bar>\n  <div style=\"height: 4px;\" *ngIf=\"!(isLoading$ | async)\"></div>\n  <div mat-dialog-content>\n      <div class=\"mat-padding\" fxLayout=\"column\">\n            <mat-form-field class=\"mat-block\">\n                <mat-label>Device name</mat-label>\n                <input matInput formControlName=\"deviceName\" required>\n                <mat-error *ngIf=\"addDeviceFormGroup.get('deviceName').hasError('required')\">\n                    Device name is required.\n                </mat-error>\n            </mat-form-field>\n            <div fxLayout=\"row\" fxLayoutGap=\"8px\">\n                <tb-entity-subtype-autocomplete\n                    fxFlex=\"50\"\n                    formControlName=\"deviceType\"\n                    [required]=\"true\"\n                    [entityType]=\"'DEVICE'\"\n                ></tb-entity-subtype-autocomplete>\n                <mat-form-field fxFlex=\"50\" class=\"mat-block\">\n                    <mat-label>Label</mat-label>\n                    <input matInput formControlName=\"deviceLabel\">\n                </mat-form-field>\n            </div>\n            <div formGroupName=\"attributes\" fxLayout=\"row\" fxLayoutGap=\"8px\">\n                <mat-form-field fxFlex=\"50\" class=\"mat-block\">\n                    <mat-label>Latitude</mat-label>\n                    <input type=\"number\" step=\"any\" matInput formControlName=\"latitude\">\n                </mat-form-field>\n                <mat-form-field fxFlex=\"50\" class=\"mat-block\">\n                    <mat-label>Longitude</mat-label>\n                    <input type=\"number\" step=\"any\" matInput formControlName=\"longitude\">\n                </mat-form-field>\n            </div>\n      </div>  \n  </div>\n  <div mat-dialog-actions fxLayout=\"row\">\n    <span fxFlex></span>\n    <button mat-button color=\"primary\"\n            type=\"button\"\n            [disabled]=\"(isLoading$ | async)\"\n            (click)=\"cancel()\" cdkFocusInitial>\n      Cancel\n    </button>\n    <button mat-button mat-raised-button color=\"primary\"\n            style=\"margin-right: 20px;\"\n            type=\"submit\"\n            [disabled]=\"(isLoading$ | async) || addDeviceForm.invalid || !addDeviceForm.dirty\">\n      Create\n    </button>\n  </div>\n</form>\n",
+                "customCss" : "",
+                "customFunction" : "let $injector = widgetContext.$scope.$injector;\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\nlet deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\n\nopenAddDeviceDialog();\n\nfunction openAddDeviceDialog() {\n    customDialog.customDialog(htmlTemplate, AddDeviceDialogController).subscribe();\n}\n\nfunction AddDeviceDialogController(instance) {\n    let vm = instance;\n    \n    vm.addDeviceFormGroup = vm.fb.group({\n      deviceName: ['', [vm.validators.required]],\n      deviceType: ['', [vm.validators.required]],\n      deviceLabel: [''],\n      attributes: vm.fb.group({\n          latitude: [null],\n          longitude: [null]\n      })      \n    });\n    \n    vm.cancel = function() {\n        vm.dialogRef.close(null);\n    };\n    \n    vm.save = function() {\n        vm.addDeviceFormGroup.markAsPristine();\n        let device = {\n            name: vm.addDeviceFormGroup.get('deviceName').value,\n            type: vm.addDeviceFormGroup.get('deviceType').value,\n            label: vm.addDeviceFormGroup.get('deviceLabel').value\n        };\n        deviceService.saveDevice(device).subscribe(\n            function (device) {\n                saveAttributes(device.id).subscribe(\n                    function () {\n                        widgetContext.updateAliases();\n                        vm.dialogRef.close(null);\n                    }\n                );\n            }\n        );\n    };\n    \n    function saveAttributes(entityId) {\n        let attributes = vm.addDeviceFormGroup.get('attributes').value;\n        let attributesArray = [];\n        for (let key in attributes) {\n            attributesArray.push({key: key, value: attributes[key]});\n        }\n        if (attributesArray.length > 0) {\n            return attributeService.saveEntityAttributes(entityId, \"SERVER_SCOPE\", attributesArray);\n        } else {\n            return widgetContext.rxjs.of([]);\n        }\n    }\n}",
+                "customResources" : [ ],
+                "id" : "70837a9d-c3de-a9a7-03c5-dccd14998758"
+              } ],
+              "actionCellButton" : [ {
+                "name" : "Edit device",
+                "icon" : "edit",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "customPretty",
+                "customHtml" : "<form #editDeviceForm=\"ngForm\" [formGroup]=\"editDeviceFormGroup\"\n      (ngSubmit)=\"save()\" style=\"width: 480px;\">\n  <mat-toolbar fxLayout=\"row\" color=\"primary\">\n    <h2>Edit device</h2>\n    <span fxFlex></span>\n    <button mat-button mat-icon-button\n            (click)=\"cancel()\"\n            type=\"button\">\n      <mat-icon class=\"material-icons\">close</mat-icon>\n    </button>\n  </mat-toolbar>\n  <mat-progress-bar color=\"warn\" mode=\"indeterminate\" *ngIf=\"isLoading$ | async\">\n  </mat-progress-bar>\n  <div style=\"height: 4px;\" *ngIf=\"!(isLoading$ | async)\"></div>\n  <div mat-dialog-content>\n      <div class=\"mat-padding\" fxLayout=\"column\">\n            <mat-form-field class=\"mat-block\">\n                <mat-label>Device name</mat-label>\n                <input matInput formControlName=\"deviceName\" required>\n                <mat-error *ngIf=\"editDeviceFormGroup.get('deviceName').hasError('required')\">\n                    Device name is required.\n                </mat-error>\n            </mat-form-field>\n            <div fxLayout=\"row\" fxLayoutGap=\"8px\">\n                <tb-entity-subtype-autocomplete\n                    fxFlex=\"50\"\n                    formControlName=\"deviceType\"\n                    [required]=\"true\"\n                    [entityType]=\"'DEVICE'\"\n                ></tb-entity-subtype-autocomplete>\n                <mat-form-field fxFlex=\"50\" class=\"mat-block\">\n                    <mat-label>Label</mat-label>\n                    <input matInput formControlName=\"deviceLabel\">\n                </mat-form-field>\n            </div>\n            <div formGroupName=\"attributes\" fxLayout=\"row\" fxLayoutGap=\"8px\">\n                <mat-form-field fxFlex=\"50\" class=\"mat-block\">\n                    <mat-label>Latitude</mat-label>\n                    <input type=\"number\" step=\"any\" matInput formControlName=\"latitude\">\n                </mat-form-field>\n                <mat-form-field fxFlex=\"50\" class=\"mat-block\">\n                    <mat-label>Longitude</mat-label>\n                    <input type=\"number\" step=\"any\" matInput formControlName=\"longitude\">\n                </mat-form-field>\n            </div>\n      </div>  \n  </div>\n  <div mat-dialog-actions fxLayout=\"row\">\n    <span fxFlex></span>\n    <button mat-button color=\"primary\"\n            type=\"button\"\n            [disabled]=\"(isLoading$ | async)\"\n            (click)=\"cancel()\" cdkFocusInitial>\n      Cancel\n    </button>\n    <button mat-button mat-raised-button color=\"primary\"\n            style=\"margin-right: 20px;\"\n            type=\"submit\"\n            [disabled]=\"(isLoading$ | async) || editDeviceForm.invalid || !editDeviceForm.dirty\">\n      Update\n    </button>\n  </div>\n</form>\n",
+                "customCss" : "",
+                "customFunction" : "let $injector = widgetContext.$scope.$injector;\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\nlet deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\n\nopenEditDeviceDialog();\n\nfunction openEditDeviceDialog() {\n    customDialog.customDialog(htmlTemplate, EditDeviceDialogController).subscribe();\n}\n\nfunction EditDeviceDialogController(instance) {\n    let vm = instance;\n    \n    vm.device = null;\n    vm.attributes = {};\n    \n    vm.editDeviceFormGroup = vm.fb.group({\n      deviceName: ['', [vm.validators.required]],\n      deviceType: ['', [vm.validators.required]],\n      deviceLabel: [''],\n      attributes: vm.fb.group({\n          latitude: [null],\n          longitude: [null]\n      })      \n    });\n    \n    vm.cancel = function() {\n        vm.dialogRef.close(null);\n    };\n    \n    vm.save = function() {\n        vm.editDeviceFormGroup.markAsPristine();\n        if (vm.editDeviceFormGroup.get('deviceType').value !== vm.device.type) {\n            delete vm.device.deviceProfileId;\n        }\n        vm.device.name = vm.editDeviceFormGroup.get('deviceName').value,\n        vm.device.type = vm.editDeviceFormGroup.get('deviceType').value,\n        vm.device.label = vm.editDeviceFormGroup.get('deviceLabel').value\n        deviceService.saveDevice(vm.device).subscribe(\n            function () {\n                saveAttributes().subscribe(\n                    function () {\n                        widgetContext.updateAliases();\n                        vm.dialogRef.close(null);\n                    }\n                );\n            }\n        );\n    };\n    \n    getEntityInfo();\n    \n    function getEntityInfo() {\n        deviceService.getDevice(entityId.id).subscribe(\n            function (device) {\n                attributeService.getEntityAttributes(entityId, 'SERVER_SCOPE',\n                                                    ['latitude', 'longitude']).subscribe(\n                   function (attributes) {\n                        for (let i = 0; i < attributes.length; i++) {\n                            vm.attributes[attributes[i].key] = attributes[i].value; \n                        }\n                        vm.device = device;\n                        vm.editDeviceFormGroup.patchValue(\n                            {\n                                deviceName: vm.device.name,\n                                deviceType: vm.device.type,\n                                deviceLabel: vm.device.label,\n                                attributes: {\n                                    latitude: vm.attributes.latitude,\n                                    longitude: vm.attributes.longitude\n                                }\n                            }, {emitEvent: false}\n                        );\n                   } \n                );\n            }\n        );    \n    }\n    \n    function saveAttributes() {\n        let attributes = vm.editDeviceFormGroup.get('attributes').value;\n        let attributesArray = [];\n        for (let key in attributes) {\n            attributesArray.push({key: key, value: attributes[key]});\n        }\n        if (attributesArray.length > 0) {\n            return attributeService.saveEntityAttributes(entityId, 'SERVER_SCOPE', attributesArray);\n        } else {\n            return widgetContext.rxjs.of([]);\n        }\n    }\n}",
+                "customResources" : [ ],
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "93931e52-5d7c-903e-67aa-b9435df44ff4"
+              }, {
+                "name" : "Delete device",
+                "icon" : "delete",
+                "type" : "custom",
+                "customFunction" : "let $injector = widgetContext.$scope.$injector;\nlet dialogs = $injector.get(widgetContext.servicesMap.get('dialogs'));\nlet deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));\n\nopenDeleteDeviceDialog();\n\nfunction openDeleteDeviceDialog() {\n    let title = \"Are you sure you want to delete the device \" + entityName +  \"?\";\n    let content = \"Be careful, after the confirmation, the device and all related data will become unrecoverable!\";\n    dialogs.confirm(title, content, 'Cancel', 'Delete').subscribe(\n        function (result) {\n            if (result) {\n                deleteDevice();\n            }\n        }\n    );\n}\n\nfunction deleteDevice() {\n    deviceService.deleteDevice(entityId.id).subscribe(\n        function () {\n            widgetContext.updateAliases();\n        }\n    );\n}\n",
+                "id" : "ec2708f6-9ff0-186b-e4fc-7635ebfa3074"
+              }, {
+                "name" : "选中",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "attribute_setter",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "de4ec862-d081-aaa7-4d72-b6f68a9b808a"
+              } ],
+              "rowClick" : [ ]
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "08c94320-e02f-fc74-8eee-7b518c7d0d0f"
+        },
+        "11128d54-abb5-7668-f3f0-88ff3e964479" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "update_multiple_attributes",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "wySetCorePwr",
+                "type" : "attribute",
+                "label" : "总电源",
+                "color" : "#2196f3",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.5388563425420885,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetCameraSensorPwr",
+                "type" : "attribute",
+                "label" : "摄像头",
+                "color" : "#4caf50",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.9110393837709759,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetLaserPwr",
+                "type" : "attribute",
+                "label" : "激光测距仪",
+                "color" : "#f44336",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.7032647029072076,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyLaserCtrl",
+                "type" : "attribute",
+                "label" : "测距仪Ctrl",
+                "color" : "#ffc107",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.31782882738499396,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetSDPwr",
+                "type" : "attribute",
+                "label" : "SD卡",
+                "color" : "#607d8b",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.3577748058134057,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyEnableRS485",
+                "type" : "attribute",
+                "label" : "RS485",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.06759909219322369,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetWiFiPwr",
+                "type" : "attribute",
+                "label" : "WIFI",
+                "color" : "#8bc34a",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.8069623073290669,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyResetWiFi",
+                "type" : "attribute",
+                "label" : "重置WIFI",
+                "color" : "#3f51b5",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.056825718888374954,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySet4GPwr",
+                "type" : "attribute",
+                "label" : "4G模块",
+                "color" : "#e91e63",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.5262855035800641,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "widgetTitle" : "电源",
+              "showResultMessage" : true,
+              "showActionButtons" : false,
+              "showGroupTitle" : true,
+              "groupTitle" : "${entityName}",
+              "fieldsAlignment" : "row",
+              "fieldsInRow" : 3
+            },
+            "title" : "电源",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "legendConfig" : {
+              "direction" : "column",
+              "position" : "bottom",
+              "sortDataKeys" : false,
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : false,
+              "showTotal" : false,
+              "showLatest" : false
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "11128d54-abb5-7668-f3f0-88ff3e964479"
+        },
+        "87ef1b19-e604-97da-97ff-297f9e4a3b07" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "update_multiple_attributes",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "wySetInfraRedPwr",
+                "type" : "attribute",
+                "label" : "红外补光灯",
+                "color" : "#4caf50",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.5970979249010848,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetInfraRedPWM",
+                "type" : "attribute",
+                "label" : "红外补光灯PWM3",
+                "color" : "#f44336",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 10,
+                  "maxValue" : 10000,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.36453075197911533,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySelfAdaptive",
+                "type" : "attribute",
+                "label" : "标靶自适应",
+                "color" : "#695929",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.6188249456815049,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : false,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyReportSelfAdaptiveInterval",
+                "type" : "attribute",
+                "label" : "标靶自适应间隔",
+                "color" : "#607d8b",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 1,
+                  "maxValue" : 120,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.1860746438725842,
+                "aggregationType" : null,
+                "units" : "秒",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyReportSelfAdaptiveInterval",
+                "type" : "attribute",
+                "label" : "补光灯测量频率",
+                "color" : "#607d8b",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 1,
+                  "maxValue" : 60,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.8243165137018468,
+                "aggregationType" : null,
+                "units" : "HZ",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "widgetTitle" : "测量设置",
+              "showResultMessage" : true,
+              "showActionButtons" : false,
+              "showGroupTitle" : false,
+              "fieldsAlignment" : "row",
+              "fieldsInRow" : 2,
+              "groupTitle" : "${entityName}"
+            },
+            "title" : "测量设置",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "87ef1b19-e604-97da-97ff-297f9e4a3b07"
+        },
+        "f2343bc9-00b5-9780-ac94-70c8a6dba849" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "update_multiple_attributes",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "wyEnableReportLedStatus",
+                "type" : "attribute",
+                "label" : "上报标靶LED状态",
+                "color" : "#2196f3",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.8967211376860466,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyReportLedStatusTimeInterval",
+                "type" : "attribute",
+                "label" : "上报间隔",
+                "color" : "#4caf50",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : false,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 1,
+                  "maxValue" : 120,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.8411516319606767,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetLedSetGearLeft",
+                "type" : "attribute",
+                "label" : "档位（左）",
+                "color" : "#ffc107",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "server",
+                  "dataKeyValueType" : "select",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "selectOptions" : [ {
+                    "value" : "0",
+                    "label" : "0档"
+                  }, {
+                    "value" : "1",
+                    "label" : "1档"
+                  } ],
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.5952146782600671,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetLedSetPwLeft",
+                "type" : "attribute",
+                "label" : "PW（左）",
+                "color" : "#607d8b",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 0,
+                  "maxValue" : 8000,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.480808000753537,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetLedSetGearRight",
+                "type" : "attribute",
+                "label" : "档位（右）",
+                "color" : "#607d8b",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "server",
+                  "dataKeyValueType" : "select",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "selectOptions" : [ {
+                    "value" : "0",
+                    "label" : "0档"
+                  }, {
+                    "value" : "1",
+                    "label" : "1档"
+                  } ],
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.8308276262262153,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetLedSetPwRight",
+                "type" : "attribute",
+                "label" : "PW（右）",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "server",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 0,
+                  "maxValue" : 8000,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.7219525300427347,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetLedONDuration",
+                "type" : "attribute",
+                "label" : "持续亮灯",
+                "color" : "#8bc34a",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : false,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 0,
+                  "maxValue" : 12000,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.848961939551056,
+                "aggregationType" : null,
+                "units" : "秒",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "widgetTitle" : "标靶",
+              "showResultMessage" : true,
+              "showActionButtons" : false,
+              "showGroupTitle" : false,
+              "fieldsAlignment" : "row",
+              "fieldsInRow" : 2,
+              "groupTitle" : "${entityName}"
+            },
+            "title" : "标靶",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "f2343bc9-00b5-9780-ac94-70c8a6dba849"
+        },
+        "da607383-7416-04e4-369e-21ad83961dbe" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "update_multiple_attributes",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "wyReportOutsideDeviceStatusTimeInterval",
+                "type" : "attribute",
+                "label" : "设备外部状态上报间隔",
+                "color" : "#2196f3",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 1,
+                  "maxValue" : 120000,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.8036500826985535,
+                "aggregationType" : null,
+                "units" : "秒",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyReportInsideDeviceStatusTimeInterval",
+                "type" : "attribute",
+                "label" : "设备内部状态上报间隔",
+                "color" : "#4caf50",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 1,
+                  "maxValue" : 120000,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.6568124155688766,
+                "aggregationType" : null,
+                "units" : "秒",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "widgetTitle" : "设备状态上报",
+              "showResultMessage" : true,
+              "showActionButtons" : false,
+              "showGroupTitle" : false,
+              "fieldsAlignment" : "row",
+              "fieldsInRow" : 2,
+              "groupTitle" : "${entityName}"
+            },
+            "title" : "设备状态上报",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "da607383-7416-04e4-369e-21ad83961dbe"
+        },
+        "f1b31597-01b6-c875-a76c-0269fd7ac7c7" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "update_multiple_attributes",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "wyEnableHeater",
+                "type" : "attribute",
+                "label" : "低温加热",
+                "color" : "#2196f3",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.09316312057245202,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyHeaterTemperatureRange",
+                "type" : "attribute",
+                "label" : "开始加热温度",
+                "color" : "#4caf50",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "server",
+                  "dataKeyValueType" : "double",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : -222,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : true,
+                  "getValueFunctionBody" : "var jsonValue = JSON.parse(value)\n\nif (jsonValue.length==2){\n    return jsonValue[0]\n}\nreturn value;",
+                  "useSetValueFunction" : true,
+                  "setValueFunctionBody" : "console.log(\"originValue:\",originValue)\nconsole.log(\"ctx:\",ctx)\nreturn value;"
+                },
+                "_hash" : 0.7238705450092515,
+                "aggregationType" : null,
+                "units" : "℃",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : false,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyHeaterTemperatureRange",
+                "type" : "attribute",
+                "label" : "停止加热",
+                "color" : "#f44336",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 0,
+                  "maxValue" : 66,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : true,
+                  "getValueFunctionBody" : "if(value.length==2){\n    return value[1]\n}\nconsole.log(\"value:\",value)",
+                  "useSetValueFunction" : true,
+                  "setValueFunctionBody" : "if(value.length==2){\n    return value[1]\n}\nconsole.log(\"value:\",value)"
+                },
+                "_hash" : 0.38689643046352806,
+                "aggregationType" : null,
+                "units" : "℃",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : false,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "widgetTitle" : "低温加热",
+              "showResultMessage" : true,
+              "showActionButtons" : false,
+              "showGroupTitle" : false,
+              "fieldsAlignment" : "row",
+              "fieldsInRow" : 2,
+              "groupTitle" : "${entityName}"
+            },
+            "title" : "低温加热",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "f1b31597-01b6-c875-a76c-0269fd7ac7c7"
+        },
+        "34c2f5ac-218d-241e-42b7-be3efa773a74" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "update_multiple_attributes",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "wyEnablePubImu",
+                "type" : "attribute",
+                "label" : "IMU数据上报",
+                "color" : "#2196f3",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.09316312057245202,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyReportImuFreq",
+                "type" : "attribute",
+                "label" : "上报频率",
+                "color" : "#4caf50",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 1,
+                  "maxValue" : 59,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.7238705450092515,
+                "aggregationType" : null,
+                "units" : "Hz",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : false,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "widgetTitle" : "低温加热",
+              "showResultMessage" : true,
+              "showActionButtons" : false,
+              "showGroupTitle" : false,
+              "fieldsAlignment" : "row",
+              "fieldsInRow" : 2,
+              "groupTitle" : "${entityName}"
+            },
+            "title" : "低温加热",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "34c2f5ac-218d-241e-42b7-be3efa773a74"
+        },
+        "21c96018-6df5-48c9-77eb-de853febbb68" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "update_multiple_attributes",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "wyEnableImuDetectionCollision",
+                "type" : "attribute",
+                "label" : "碰撞检测",
+                "color" : "#2196f3",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.7892228191161508,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyEnableWDPWR",
+                "type" : "attribute",
+                "label" : "看门狗",
+                "color" : "#4caf50",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.3926129466136562,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetOTA",
+                "type" : "timeseries",
+                "label" : "OTA远程升级",
+                "color" : "#ffc107",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.6789266772499614,
+                "aggregationType" : "NONE",
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wySetIrCut",
+                "type" : "attribute",
+                "label" : "IRCut",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "booleanSwitch",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "slideToggleLabelPosition" : "after",
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.513594391917017,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "wyRTCInterval",
+                "type" : "attribute",
+                "label" : "RTC睡眠间隔",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "shared",
+                  "dataKeyValueType" : "integer",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "step" : 1,
+                  "minValue" : 1,
+                  "maxValue" : 120,
+                  "useCustomIcon" : false,
+                  "useGetValueFunction" : false,
+                  "useSetValueFunction" : false
+                },
+                "_hash" : 0.6989582667131212,
+                "aggregationType" : null,
+                "units" : "分钟",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1669031016072,
+                  "endTimeMs" : 1669117416072
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "widgetTitle" : "其他",
+              "showResultMessage" : true,
+              "showActionButtons" : false,
+              "showGroupTitle" : false,
+              "fieldsAlignment" : "row",
+              "fieldsInRow" : 2,
+              "groupTitle" : "${entityName}"
+            },
+            "title" : "其他",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "enableDataExport" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "21c96018-6df5-48c9-77eb-de853febbb68"
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "位移设备管理",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "08c94320-e02f-fc74-8eee-7b518c7d0d0f" : {
+                  "sizeX" : 14,
+                  "sizeY" : 10,
+                  "row" : 0,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        },
+        "attribute_setter" : {
+          "name" : "attribute_setter",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "11128d54-abb5-7668-f3f0-88ff3e964479" : {
+                  "sizeX" : 10,
+                  "sizeY" : 5,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "87ef1b19-e604-97da-97ff-297f9e4a3b07" : {
+                  "sizeX" : 10,
+                  "sizeY" : 4,
+                  "row" : 5,
+                  "col" : 0
+                },
+                "f2343bc9-00b5-9780-ac94-70c8a6dba849" : {
+                  "sizeX" : 12,
+                  "sizeY" : 5,
+                  "row" : 0,
+                  "col" : 10
+                },
+                "da607383-7416-04e4-369e-21ad83961dbe" : {
+                  "sizeX" : 4,
+                  "sizeY" : 4,
+                  "row" : 5,
+                  "col" : 10
+                },
+                "f1b31597-01b6-c875-a76c-0269fd7ac7c7" : {
+                  "sizeX" : 4,
+                  "sizeY" : 4,
+                  "row" : 5,
+                  "col" : 14
+                },
+                "34c2f5ac-218d-241e-42b7-be3efa773a74" : {
+                  "sizeX" : 4,
+                  "sizeY" : 4,
+                  "row" : 5,
+                  "col" : 18
+                },
+                "21c96018-6df5-48c9-77eb-de853febbb68" : {
+                  "sizeX" : 22,
+                  "sizeY" : 3,
+                  "row" : 9,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "f278dcee-1523-298f-0e0e-bdda6af53ad3" : {
+          "id" : "f278dcee-1523-298f-0e0e-bdda6af53ad3",
+          "alias" : "发射的非",
+          "filter" : {
+            "type" : "entityType",
+            "resolveMultiple" : true,
+            "entityType" : "DEVICE"
+          }
+        },
+        "111363dd-ba91-0f76-7be6-ffba135f5b21" : {
+          "id" : "111363dd-ba91-0f76-7be6-ffba135f5b21",
+          "alias" : "测试后台调度测量11206",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "066e7030-5a83-11ed-b21f-f73e7b7fb69e"
+            }
+          }
+        },
+        "356fbd32-c81a-1041-b81a-b975aee970a6" : {
+          "id" : "356fbd32-c81a-1041-b81a-b975aee970a6",
+          "alias" : "位移设备列表",
+          "filter" : {
+            "type" : "entityType",
+            "resolveMultiple" : true,
+            "entityType" : "DEVICE"
+          }
+        },
+        "79ae1693-b5cd-fb88-8a03-4b702a05a3b5" : {
+          "id" : "79ae1693-b5cd-fb88-8a03-4b702a05a3b5",
+          "alias" : "选中的设备",
+          "filter" : {
+            "type" : "stateEntity",
+            "resolveMultiple" : false,
+            "stateEntityParamName" : null,
+            "defaultStateEntity" : null
+          }
+        }
+      },
+      "filters" : { },
+      "timewindow" : {
+        "displayValue" : "",
+        "hideInterval" : false,
+        "hideLastInterval" : false,
+        "hideQuickInterval" : false,
+        "hideAggregation" : false,
+        "hideAggInterval" : false,
+        "hideTimezone" : false,
+        "selectedTab" : 0,
+        "realtime" : {
+          "realtimeType" : 0,
+          "interval" : 1000,
+          "timewindowMs" : 60000,
+          "quickInterval" : "CURRENT_DAY"
+        },
+        "history" : {
+          "historyType" : 0,
+          "interval" : 1000,
+          "timewindowMs" : 60000,
+          "fixedTimewindow" : {
+            "startTimeMs" : 1668147676755,
+            "endTimeMs" : 1668234076755
+          },
+          "quickInterval" : "CURRENT_DAY"
+        },
+        "aggregation" : {
+          "type" : "AVG",
+          "limit" : 25000
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : true,
+        "showEntitiesSelect" : true,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : true,
+        "toolbarAlwaysOpen" : true
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "70ba5b10-60e2-11ed-b8bf-f32b6a35e246"
+    },
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "name" : "位移设备管理",
+    "title" : "位移设备管理"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
